@@ -6,6 +6,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 
 
 TEXT_FILE = Path(__file__).with_name("text.txt")
+RESULT_FILE = Path(__file__).with_name("result.txt")
 WORD_PARTS = {"NOUN", "ADJF"}
 
 def words_agree(first, second):
@@ -58,6 +59,7 @@ def main():
 
     morph = pymorphy3.MorphAnalyzer()
     text = TEXT_FILE.read_text(encoding="utf-8")
+    result = []
 
     # Обрабатываем соседние слова внутри каждого предложения
     for sentence in sent_tokenize(text, language="russian"):
@@ -66,7 +68,10 @@ def main():
         for first_word, second_word in zip(tokens, tokens[1:]):
             pair = find_pair(first_word, second_word, morph)
             if pair is not None:
-                print(*pair)
+                result.append(" ".join(pair))
+
+    # Сохраняем каждую пару на отдельной строке
+    RESULT_FILE.write_text("\n".join(result), encoding="utf-8")
 
 
 if __name__ == "__main__":
