@@ -33,14 +33,16 @@ def find_pair(first_word, second_word, morph, min_score = 0.01):
     for first in first_parses:
         # Берём только существительные и полные прилагательные 
         # Не берём местоимения в качестве прилагательных 
+        # Не берём числительные в качестве прилагательных 
         # Не берём маловероятные варианты (score < min_score) (Например, местоимения, которые pymorphy определяет как существительные)
-        if first.tag.POS not in WORD_PARTS or "Apro" in first.tag or first.score < min_score:
+        if first.tag.POS not in WORD_PARTS or "Apro" in first.tag or "Anum" in first.tag or first.score < min_score:
             continue
         for second in second_parses:
             # Берём только существительные и полные прилагательные 
             # Не берём местоимения в качестве прилагательных 
+            # Не берём числительные в качестве прилагательных 
             # Не берём маловероятные варианты (score < min_score)
-            if second.tag.POS not in WORD_PARTS or "Apro" in second.tag or second.score < min_score:
+            if second.tag.POS not in WORD_PARTS or "Apro" in second.tag or "Anum" in second.tag or second.score < min_score:
                 continue
             # Проверяем согласованность по числу, падежу и роду
             if not words_agree(first, second):
