@@ -6,4 +6,4 @@ python -m nltk.downloader punkt_tab
 python lab1/lab01.py
 ```
 
-Текст: `lab1/text.txt`. Результаты: `result.txt`.
+Текст: `lab1/text.txt`. Результаты: `lab1/result.txt`.
