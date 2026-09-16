@@ -1,7 +1,7 @@
 # Лабораторная работа №1
 
 ```bash
-python -m pip install nltk pymorphy3 pymystem3
+python -m pip install nltk pymorphy3
 python -m nltk.downloader punkt_tab
 python lab1/lab01.py
 ```
