@@ -68,7 +68,7 @@ def main():
             pair = find_pair(first_word, second_word, morph)
             if pair is not None:
                 line = f"{first_word} {second_word} -> {' '.join(pair)}"
-                result.append(" ".join(pair))
+                result.append(line)
                 print(line)
 
     # Сохраняем результат в файл
